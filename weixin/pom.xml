@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.fkjava</groupId>
+		<artifactId>wx_kemao_3</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>weixin</artifactId>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>commons</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>2.3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+
+		<!-- 加入Spring Data JPA的依赖，会自动下载Hibernate等相关的依赖文件，而且会自动完成配置 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- 用于访问Redis的自动配置 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<!-- Spring MVC的自动配置 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- 开发者工具，用于实现热部署（修改文件以后马上生效） -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<!-- scope必须是runtime才能生效 -->
+			<scope>runtime</scope>
+		</dependency>
+		<!-- MySQL的数据库驱动 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- 单元测试 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<!-- 仅在单元测试的时候有效 -->
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<!-- 每个依赖的version是必须的，但是由于继承了Spring Boot的项目配置，所以可以省略！ -->
+			<!-- <version>4.12</version> -->
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- 可选的，Spring Boot的Maven插件，用于生成jar文件的时候，把所有相关文件全部打包在一起 -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+
+				<!-- 配置下面的参数，可以使用 mvn spring-boot:start 方式运行 -->
+				<!-- 而停止的是，直接以 mvn spring-boot:stop 方式停止，不需要再查进程 -->
+				<configuration>
+					<executable>true</executable>
+					<fork>true</fork>
+					<!-- 指定MBean端口，默认9001，每个程序使用一个端口号 -->
+					<jmxPort>9001</jmxPort>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

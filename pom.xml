@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.fkjava</groupId>
+	<artifactId>wx_kemao_3</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<!-- 继承一个项目的配置 -->
+	<!-- 这里继承了Spring Boot的配置，可以方便后面的版本号管理，各个组件的版本Spring Boot都已经统一管理 -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.3.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<!-- 指定JDK的版本号，可以选择的是1.8、9、10、11 -->
+		<java.version>11</java.version>
+		<!-- 指定源代码的字符编码 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- 生成的报告使用的字符编码 -->
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+	<modules>
+		<module>weixin</module>
+		<module>subscribe</module>
+		<module>commons</module>
+		<module>unsubscribe</module>
+		<module>self-menu</module>
+		<module>library</module>
+	</modules>
+</project>
